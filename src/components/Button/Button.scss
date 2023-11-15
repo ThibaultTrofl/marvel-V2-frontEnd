@@ -1,0 +1,11 @@
+.button_container {
+  border: solid red 2px;
+  text-align: center;
+  padding: 0px 10px;
+  border-radius: 10px;
+  height: 30px;
+  text-align: center;
+  &:hover {
+    cursor: pointer;
+  }
+}

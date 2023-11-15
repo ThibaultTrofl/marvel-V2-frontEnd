@@ -1,0 +1,57 @@
+.card_charactersandcomics_container {
+  height: fit-content;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  background-color: orange;
+
+  &-title {
+    width: 80%;
+    padding: 10px 10px;
+    line-height: 10px;
+    height: 10px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  &-article {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+
+    &-img {
+      width: 200px;
+      height: 200px;
+      object-fit: contain;
+    }
+    &-description {
+      visibility: hidden;
+      display: none;
+    }
+  }
+  &:hover {
+    cursor: pointer;
+    width: 430px;
+
+    &title {
+      width: 400px;
+      color: red;
+    }
+    &-article {
+      justify-content: space-between;
+      &-img {
+        width: 50%;
+        object-fit: contain;
+      }
+      &-description {
+        width: 200px;
+        height: 200px;
+        background-color: black;
+        visibility: visible;
+        display: block;
+      }
+    }
+  }
+}
