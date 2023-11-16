@@ -2,8 +2,12 @@
   --height-header: 60px;
   --height-footer: 60px;
   --height-main: calc(100vh - (var(--height-header) + var(--height-footer)));
+  --color-dark: #2d2d2d;
 }
-
+body {
+  background-color: var(--color-dark);
+  color: #bdbdbd;
+}
 .container {
   max-width: 1280px;
   margin: 0 auto;
@@ -12,7 +16,7 @@
 
 main {
   min-height: var(--height-main);
-  background-color: aqua;
+  // background-color: aqua;
 }
 .main_container {
   width: 100%;
@@ -20,11 +24,11 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  border: solid red 2px;
+  // justify-content: space-between;
+  // border: solid red 2px;
   &-nav {
     padding: 50px;
-    border: solid yellow 2px;
+    // border: solid yellow 2px;
     width: 100%;
     display: flex;
     justify-content: center;

@@ -1,0 +1,50 @@
+.card_specific_characters_container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin: 40px 80px;
+
+  &-information {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 30px;
+    border-bottom: solid red 1px;
+    padding-bottom: 30px;
+
+    &-img {
+      height: 100%;
+      object-fit: contain;
+      border-radius: 20px;
+    }
+
+    &-text {
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 40px;
+      &-title {
+        align-self: flex-start;
+        font-size: 30px;
+        font-weight: 900;
+        text-decoration: underline;
+      }
+      &-descritpion {
+        max-width: 300px;
+      }
+    }
+  }
+  &-comics {
+    height: 300px;
+    // width: 80%;
+    border: solid 3px black;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex: 1;
+  }
+}

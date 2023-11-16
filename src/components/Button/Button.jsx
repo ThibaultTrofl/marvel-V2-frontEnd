@@ -1,5 +1,6 @@
 import "./Button.scss";
 
+// eslint-disable-next-line react/prop-types
 const Button = ({ text, func }) => {
   return (
     <>

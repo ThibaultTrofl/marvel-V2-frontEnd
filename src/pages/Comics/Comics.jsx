@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import "./Comics.scss";
+
 import CardCharactersAndComics from "../../components/CardCharactersAndComics/CardCharactersAndComicsAndComics";
 
 const Comics = () => {
+  const navigate = useNavigate();
+  console.log(window.pageXOffset);
   const [comicsLoading, setComicsLoading] = useState(true);
   const [comicsData, setComicsData] = useState({});
 
@@ -11,8 +15,9 @@ const Comics = () => {
     const fetchCharacters = async () => {
       try {
         {
-          const { data } = await axios.get("http://localhost:3000/comics");
-          console.log(data);
+          const { data } = await axios.get(
+            `${import.meta.env.VITE_URL_BACKEND}/comics`
+          );
           setComicsData(data);
           setComicsLoading(false);
         }
@@ -33,16 +38,14 @@ const Comics = () => {
             <nav className="main_container-nav">Barre de navigation</nav>
             <div className="main_container-list">
               {comicsData.results.map((data) => {
-                console.log(data);
                 return (
-                  <>
-                    <CardCharactersAndComics
-                      key={data._id}
-                      name={data.title}
-                      img={data.thumbnail}
-                      description={data.description}
-                    />
-                  </>
+                  <CardCharactersAndComics
+                    key={data._id}
+                    name={data.title}
+                    img={data.thumbnail}
+                    description={data.description}
+                    destination={() => navigate(`/comics/${data._id}`)}
+                  />
                 );
               })}
             </div>
