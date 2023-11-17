@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
-import "./SpecificCharacter.scss";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+
+// Import style
+import "./SpecificCharacter.scss";
+
+// Import component
 import CardSpecificCharacter from "../../components/CardSpecificCharacter/CardSpecificCharacter";
 
-const SpecificCharacter = () => {
+const SpecificCharacter = (setActualPage) => {
   const { id } = useParams();
 
   const [specificCharactersLoading, setSpecificCharactersLoading] =
@@ -12,12 +16,12 @@ const SpecificCharacter = () => {
   const [specificCharactersData, setSpecificCharactersData] = useState({});
 
   useEffect(() => {
+    setActualPage("specificCharacter");
     const fetchSpecificCharacter = async () => {
       try {
         const { data } = await axios.get(
           `${import.meta.env.VITE_URL_BACKEND}/characters/${id}`
         );
-        console.log(data);
         setSpecificCharactersData(data);
         setSpecificCharactersLoading(false);
       } catch (error) {
@@ -26,6 +30,7 @@ const SpecificCharacter = () => {
     };
     fetchSpecificCharacter();
   }, []);
+
   return (
     <main className="container">
       {specificCharactersLoading && (

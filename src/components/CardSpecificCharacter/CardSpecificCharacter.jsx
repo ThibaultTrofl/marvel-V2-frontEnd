@@ -1,5 +1,8 @@
+// Import style
 import "./CardSpecificCharacter.scss";
 import noInformation from "../../assets/no_information.png";
+
+// Import component
 import CardCharactersAndComics from "../CardCharactersAndComics/CardCharactersAndComicsAndComics";
 
 // eslint-disable-next-line react/prop-types

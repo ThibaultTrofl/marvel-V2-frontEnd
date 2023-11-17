@@ -1,3 +1,4 @@
+// Import style
 import "./Footer.scss";
 
 const Footer = () => {

@@ -1,8 +1,11 @@
-import marvelLogo from "../../assets/Marvel_Logo.png";
-import Button from "../../components/Button/Button";
-import "./Header.scss";
-
 import { useNavigate } from "react-router-dom";
+
+// Import style
+import "./Header.scss";
+import marvelLogo from "../../assets/Marvel_Logo.png";
+
+// Import component
+import Button from "../../components/Button/Button";
 
 const Header = () => {
   const navigate = useNavigate();

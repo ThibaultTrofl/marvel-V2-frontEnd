@@ -1,6 +1,9 @@
+import { useIntersectionObserver, useWindowSize } from "@uidotdev/usehooks";
+
+// Import style
 import "./CardCharactersAndComics.scss";
 import noInformation from "../../assets/no_information.png";
-import { useIntersectionObserver, useWindowSize } from "@uidotdev/usehooks";
+
 // import Button from "../Button/Button.jsx";
 
 // eslint-disable-next-line react/prop-types
@@ -12,21 +15,7 @@ const CardCharactersAndComics = ({ name, img, description, destination }) => {
   });
   const size = useWindowSize();
 
-  // const withScreen = () => {
-  //   if (size.width < 1280) {
-  //     return size.width;
-  //   } else {
-  //     return 1280;
-  //   }
-  // };
   let rightSpace = size.width - entry?.boundingClientRect.right;
-  // console.log(withScreen(), name);
-  // console.log({
-  //   total: size.width,
-  //   limit: entry?.boundingClientRect.right,
-  //   calc: rightSpace,
-  //   name,
-  // });
 
   const getLimitRight = () => {
     rightSpace = size.width - entry?.boundingClientRect.right;
@@ -67,7 +56,7 @@ const CardCharactersAndComics = ({ name, img, description, destination }) => {
             <img
               src={noInformation}
               alt="Image non disponible"
-              className="card_charactersandcomics_container-article-img"
+              className="card_charactersandcomics_container-article-noimg"
             />
           )}
         </div>

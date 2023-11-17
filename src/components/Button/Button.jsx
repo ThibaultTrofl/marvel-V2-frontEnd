@@ -1,3 +1,4 @@
+// Import style
 import "./Button.scss";
 
 // eslint-disable-next-line react/prop-types

@@ -1,22 +1,25 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+
+// Import style
 import "./Comics.scss";
 
+// Import component
 import CardCharactersAndComics from "../../components/CardCharactersAndComics/CardCharactersAndComicsAndComics";
+import Pagination from "../../components/Pagination/Pagination";
 
-const Comics = () => {
-  const navigate = useNavigate();
-  console.log(window.pageXOffset);
+const Comics = (setActualPage) => {
   const [comicsLoading, setComicsLoading] = useState(true);
   const [comicsData, setComicsData] = useState({});
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
+    setActualPage("comics");
     const fetchCharacters = async () => {
       try {
         {
           const { data } = await axios.get(
-            `${import.meta.env.VITE_URL_BACKEND}/comics`
+            `${import.meta.env.VITE_URL_BACKEND}/comics?page=${page}`
           );
           setComicsData(data);
           setComicsLoading(false);
@@ -26,7 +29,7 @@ const Comics = () => {
       }
     };
     fetchCharacters();
-  }, []);
+  }, [page]);
 
   return (
     <>
@@ -44,12 +47,17 @@ const Comics = () => {
                     name={data.title}
                     img={data.thumbnail}
                     description={data.description}
-                    destination={() => navigate(`/comics/${data._id}`)}
                   />
                 );
               })}
             </div>
-            <nav className="main_container-nav">Pagination</nav>
+            <nav className="main_container-nav">
+              <Pagination
+                position={page}
+                setPosition={setPage}
+                count={comicsData.count}
+              />
+            </nav>
           </section>
         )}
       </main>
