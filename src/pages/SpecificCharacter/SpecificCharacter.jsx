@@ -6,9 +6,10 @@ import { useParams } from "react-router-dom";
 import "./SpecificCharacter.scss";
 
 // Import component
+import Loading from "../../components/Loading/Loading";
 import CardSpecificCharacter from "../../components/CardSpecificCharacter/CardSpecificCharacter";
 
-const SpecificCharacter = (setActualPage) => {
+const SpecificCharacter = () => {
   const { id } = useParams();
 
   const [specificCharactersLoading, setSpecificCharactersLoading] =
@@ -16,7 +17,6 @@ const SpecificCharacter = (setActualPage) => {
   const [specificCharactersData, setSpecificCharactersData] = useState({});
 
   useEffect(() => {
-    setActualPage("specificCharacter");
     const fetchSpecificCharacter = async () => {
       try {
         const { data } = await axios.get(
@@ -34,7 +34,9 @@ const SpecificCharacter = (setActualPage) => {
   return (
     <main className="container">
       {specificCharactersLoading && (
-        <section className="main_container">Loading</section>
+        <section className="main_container">
+          <Loading />
+        </section>
       )}
       {!specificCharactersLoading && (
         <section className="main_container">

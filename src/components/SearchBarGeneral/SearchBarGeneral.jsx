@@ -1,31 +1,32 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useParams } from "react-router-dom";
 
 //import Style
-import "./SearchBar.scss";
+import "./SearchBarGeneral.scss";
+import Button from "../Button/Button";
 
 // eslint-disable-next-line react/prop-types
 const SearchBar = () => {
-  const { name } = useParams();
-  console.log(name);
   const navigate = useNavigate();
 
   const [textInput, setTextInput] = useState("");
 
   return (
-    <div>
+    <div className="search_bar-container">
       <label htmlFor="searchbar">
         <input
+          placeholder="Rechercher un comics ou un personnage"
           type="text"
           name="searchbar"
           onChange={(event) => setTextInput(event.target.value)}
           value={textInput}
+          className="search_bar-container-input"
         />
       </label>
-      <button onClick={() => navigate(`/search?name=${textInput}`)}>
-        Rechercher
-      </button>
+      <Button
+        text="Rechercher"
+        func={() => navigate(`/search?name=${textInput}`)}
+      />
     </div>
   );
 };

@@ -4,16 +4,29 @@ import { useIntersectionObserver, useWindowSize } from "@uidotdev/usehooks";
 import "./CardCharactersAndComics.scss";
 import noInformation from "../../assets/no_information.png";
 
-// import Button from "../Button/Button.jsx";
+// Import componenet
+import Button from "../Button/Button.jsx";
+import addRemoveFavorite from "../../function/addRemoveFavorite.jsx";
+import { useEffect, useState } from "react";
 
-// eslint-disable-next-line react/prop-types
-const CardCharactersAndComics = ({ name, img, description, destination }) => {
+const CardCharactersAndComics = ({
+  name,
+  img,
+  description,
+  destination,
+  id,
+  favorite,
+  // eslint-disable-next-line react/prop-types
+  setFavorite,
+}) => {
   const [ref, entry] = useIntersectionObserver({
     threshold: 0,
     root: null,
     rootMargin: "430px",
   });
   const size = useWindowSize();
+
+  const [cardFavorite, setCardFavorite] = useState(false);
 
   let rightSpace = size.width - entry?.boundingClientRect.right;
 
@@ -23,13 +36,25 @@ const CardCharactersAndComics = ({ name, img, description, destination }) => {
 
   window.onresize = getLimitRight();
 
+  const func = () => {
+    if (destination) {
+      destination();
+    } else {
+      null;
+    }
+  };
+
+  useEffect(() => {
+    if (!favorite) {
+      return;
+    } else if (favorite?.includes(id)) {
+      setCardFavorite(true);
+    }
+  }, [favorite]);
+
   return (
     <>
-      <article
-        ref={ref}
-        className="card_charactersandcomics_container"
-        onClick={() => destination()}
-      >
+      <article ref={ref} className="card_charactersandcomics_container">
         {rightSpace < 230 && (
           <h2
             className={
@@ -71,7 +96,20 @@ const CardCharactersAndComics = ({ name, img, description, destination }) => {
               {description ||
                 "Malheureusement, les données fournis par l'API ne possèdent pas de description. Si changement, cela sera modifié automatiquement."}
             </p>
-            {/* <Button text={"Voir plus"} /> */}
+            <Button text={"Voir plus"} card={true} func={() => func()} />
+            {cardFavorite ? (
+              <Button
+                text={"Retirer des Favoris"}
+                card={true}
+                func={() => addRemoveFavorite({ favorite, setFavorite, id })}
+              />
+            ) : (
+              <Button
+                text={"Ajouter aux Favoris"}
+                card={true}
+                func={() => addRemoveFavorite({ favorite, setFavorite, id })}
+              />
+            )}
           </div>
         )}
 
@@ -85,7 +123,20 @@ const CardCharactersAndComics = ({ name, img, description, destination }) => {
               {description ||
                 "Malheureusement, les données fournis par l'API ne possèdent pas de description. Si changement, cela sera modifié automatiquement."}
             </p>
-            {/* <Button text={"Voir plus"} /> */}
+            <Button text={"Voir plus"} card={true} func={() => func()} />
+            {cardFavorite ? (
+              <Button
+                text={"Retirer des Favoris"}
+                card={true}
+                func={() => addRemoveFavorite({ favorite, setFavorite, id })}
+              />
+            ) : (
+              <Button
+                text={"Ajouter aux Favoris"}
+                card={true}
+                func={() => addRemoveFavorite({ favorite, setFavorite, id })}
+              />
+            )}
           </div>
         )}
       </article>

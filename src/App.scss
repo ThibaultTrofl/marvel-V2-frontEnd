@@ -1,12 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 :root {
   --height-header: 60px;
   --height-footer: 60px;
   --height-main: calc(100vh - (var(--height-header) + var(--height-footer)));
   --color-dark: #2d2d2d;
+  --color-darkGrey: #535252;
 }
 body {
   background-color: var(--color-dark);
   color: #bdbdbd;
+  font-family: "Raleway", sans-serif;
 }
 .container {
   max-width: 1280px;
@@ -27,11 +30,11 @@ main {
   // justify-content: space-between;
   // border: solid red 2px;
   &-nav {
-    padding: 50px;
     // border: solid yellow 2px;
     width: 100%;
     display: flex;
     justify-content: center;
+    padding: 20px 0;
   }
   &-list {
     display: flex;

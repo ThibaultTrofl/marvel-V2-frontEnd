@@ -6,12 +6,13 @@ import { useNavigate } from "react-router-dom";
 import "./Characters.scss";
 
 // Import component
-import CardCharacters from "../../components/CardCharactersAndComics/CardCharactersAndComicsAndComics";
+import Loading from "../../components/Loading/Loading";
+import CardCharactersAndComics from "../../components/CardCharactersAndComics/CardCharactersAndComics";
 import Pagination from "../../components/Pagination/Pagination";
 import SearchBarGeneral from "../../components/SearchBarGeneral/SearchBarGeneral";
 
 // eslint-disable-next-line react/prop-types
-const Characters = ({ setActualPage }) => {
+const Characters = ({ favorite, setFavorite }) => {
   const navigate = useNavigate();
 
   const [charactersLoading, setCharactersLoading] = useState(true);
@@ -19,7 +20,6 @@ const Characters = ({ setActualPage }) => {
   const [page, setPage] = useState(1);
 
   useEffect(() => {
-    setActualPage("character");
     const fetchCharacters = async () => {
       try {
         {
@@ -40,7 +40,9 @@ const Characters = ({ setActualPage }) => {
     <>
       <main className="container">
         {charactersLoading && (
-          <section className="main_container">Loading</section>
+          <section className="main_container">
+            <Loading />
+          </section>
         )}
 
         {!charactersLoading && (
@@ -51,11 +53,14 @@ const Characters = ({ setActualPage }) => {
             <div className="main_container-list">
               {charactersData.results.map((data) => {
                 return (
-                  <CardCharacters
+                  <CardCharactersAndComics
                     key={data._id}
+                    id={data._id}
                     name={data.name}
                     img={data.thumbnail}
                     description={data.description}
+                    favorite={favorite}
+                    setFavorite={setFavorite}
                     destination={() => navigate(`/characters/${data._id}`)}
                   />
                 );

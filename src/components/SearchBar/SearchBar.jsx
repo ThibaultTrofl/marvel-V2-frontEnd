@@ -1,45 +1,23 @@
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-
 //import Style
-import "./SearchBar.scss";
+import "../SearchBarGeneral/SearchBarGeneral.scss";
 
 // eslint-disable-next-line react/prop-types
-const SearchBar = ({ actualPage }) => {
-  const navigate = useNavigate;
-  const [textInput, setTextInput] = useState("");
-
+const SearchBar = ({ setName, name }) => {
   const handleChangeInput = (event) => {
     event.preventDefault();
-    setTextInput(event.target.value);
+    setName(event.target.value);
   };
 
-  useEffect(() => {
-    if (actualPage === "search") {
-      setTimeout(navigate(`/search?name=${textInput}`), "2000");
-    }
-  }, [textInput]);
-
   return (
-    <div>
-      <label htmlFor="">
-        <input
-          type="text"
-          onChange={(event) => handleChangeInput(event)}
-          value={textInput}
-        />
-        (
-        <button onClick={() => navigate(`/search?name=${textInput}`)}>
-          Rechercher
-        </button>
-        )
-      </label>
-      {actualPage === "search" && (
-        <div>
-          <button>Comics</button> <button>Characters</button>
-        </div>
-      )}
-    </div>
+    <label htmlFor="searchbar" className="search_bar-container">
+      <input
+        className="search_bar-container-input"
+        type="text"
+        onChange={(event) => handleChangeInput(event)}
+        value={name}
+        name="searchbar"
+      />
+    </label>
   );
 };
 export default SearchBar;

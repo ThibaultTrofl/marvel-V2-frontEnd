@@ -1,0 +1,22 @@
+.NoPhone {
+  height: 100vh;
+  width: 100vw;
+  &-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    &-img {
+      width: 80%;
+      object-fit: cover;
+    }
+    &-text {
+      width: 80%;
+      font-size: 30;
+      font-weight: 600;
+    }
+  }
+}

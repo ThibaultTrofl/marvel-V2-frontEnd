@@ -3,7 +3,8 @@ import "./CardSpecificCharacter.scss";
 import noInformation from "../../assets/no_information.png";
 
 // Import component
-import CardCharactersAndComics from "../CardCharactersAndComics/CardCharactersAndComicsAndComics";
+import CardCharactersAndComics from "../CardCharactersAndComics/CardCharactersAndComics";
+import SearchBarGeneral from "../SearchBarGeneral/SearchBarGeneral";
 
 // eslint-disable-next-line react/prop-types
 const CardSpecificCharacter = ({ data }) => {
@@ -11,7 +12,9 @@ const CardSpecificCharacter = ({ data }) => {
   const { thumbnail, name, description } = data;
   return (
     <>
-      <nav className="main_container-nav">Barre de navigation</nav>
+      <nav className="main_container-nav">
+        <SearchBarGeneral />
+      </nav>
       <article className="card_specific_characters_container">
         <div className="card_specific_characters_container-information">
           {/* eslint-disable-next-line react/prop-types */}

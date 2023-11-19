@@ -13,8 +13,7 @@ const Header = () => {
   return (
     <header className="container header_container">
       <section className="header_container-section">
-        <Button text="Compte" />
-        <Button text="Favoris" />
+        <Button text="Favoris" func={() => navigate("/favorite")} />
       </section>
       <section className="header_container-section">
         <img

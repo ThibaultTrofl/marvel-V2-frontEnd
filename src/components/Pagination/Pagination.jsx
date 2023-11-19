@@ -30,12 +30,12 @@ const Pagination = ({ count, position, setPosition }) => {
       }
     }
   };
-  console.log(straight);
 
   useEffect(() => {
     behindPage();
     straigthPage();
   }, [position]);
+
   behindPage();
   straigthPage();
   return (
@@ -69,7 +69,6 @@ const Pagination = ({ count, position, setPosition }) => {
         <p>{position}</p>
         <section className="pagination_container-buttonSideRight">
           {straight.map((number) => {
-            console.log(straight);
             return (
               <button key={number} onClick={() => setPosition(number)}>
                 {number}
